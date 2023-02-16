@@ -1,5 +1,4 @@
 from pytube import YouTube
-from PySimpleGUI import PySimpleGUI as sg
 import moviepy.editor as mp
 import re
 import os

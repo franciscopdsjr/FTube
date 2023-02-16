@@ -1,12 +1,13 @@
 from importlib.resources import path
-from flask import Flask, render_template, request, Response,redirect, send_file
+from flask import Flask, render_template, request, send_file
 import os
-from os import remove
-import pafy
+import re
+
 import moviepy.editor as mp
+from pytube import YouTube
 
 app = Flask(__name__)
-path = os.getcwd() + "/"
+path = "C:/Users/franc/Music/Musicas" + "/"
 
 @app.route('/')
 def route():
@@ -16,15 +17,19 @@ def route():
 def envia():
     if request.method == 'POST':
         url = request.form['url']
-        video = pafy.new(url)
-        best = video.getbest(preftype="mp4")
-        best.download(path)
-        name = path + video.title + ".mp4"
-        clip = mp.VideoFileClip(name)
-        clip.audio.write_audiofile(path + video.title + ".mp3")
-        p = path + video.title + ".mp3"
-        print (video.title)
-        return send_file(p, as_attachment=True)
+        yt = YouTube(url)
+        ys = yt.streams.filter(only_audio=True).first().download(path)
+
+        for file in os.listdir(path):
+            if re.search('mp4',file):
+                mp4_path = os.path.join(path, file)
+                mp3_path = os.path.join(path, os.path.splitext(file)[0]+'.mp3')
+                new_file = mp.AudioFileClip(mp4_path)
+                new_file.write_audiofile(mp3_path)
+                os.remove(mp4_path)
+
+        print ("Sucesso! ")
+    return render_template("sucesso.html")#send_file(p, as_attachment=True)
 
 if __name__ == '__main__':
     app.run(host ='localhost')

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Ftube</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style type="text/css">
+                .title {
+            color: #343a40;
+            margin-bottom: 0px;
+            font-size: 74px;
+            font-weight: bold;
+            margin-top: 30px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+        }
+
+        .btn{
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 0.2rem !important;
+            color: #0e0d0d;
+            display: inline-block;
+            margin: 0 2px;
+            text-align: center;
+            vertical-align: middle;
+            background-color: transparent;
+            border: 1px solid;
+            padding: 0.65rem 0.9rem;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+        .btn:hover {
+            color: #7f8e9c;
+            text-decoration: #0e0d0d;
+            box-shadow: 0 0 0 0.2rem rgba(2, 68, 2, 0.25);
+            background-color: #bbcad8;
+        }
+        .btn:focus, .btn.focus {
+            color: #5c7a97;
+            outline: 0;
+            box-shadow: 0 0 0 0.2rem rgba(255, 122, 87, 0.25);
+            
+        }
+        .banner{
+            /*background-color: #74899c;*/
+            text-align: center;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+        }
+        body{
+            background-color: #c9d4df;
+        }
+  
+    </style>
+</head>
+<body>
+    <div class="banner">
+        <h1 class="title" data-text="Ftube">FTUBE</h1>
+        <form method="POST">
+            <p>URL do video a ser baixado: <input class = "form-control" type="text" required name="url"></p>
+            <button class="btn" onclick="fazerRequisicao()" type="submit" formaction="/envia">Download</button>
+            <p id="resultado"> 
+                <script>
+                    function fazerRequisicao()
+                    {
+                       document.getElementById("resultado").innerHTML = "Baixando...";
+                    }
+                </script>
+                </h1></p>
+        </form>
+    </div>
+</body>
+</html>
+
+
